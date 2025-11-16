@@ -1,0 +1,58 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:#000; color:#0f0; font-family:'Inter',sans-serif;
+  overflow-x:hidden; position:relative;
+}
+.matrix {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.8), #000);
+  z-index:-1; opacity:0.3;
+}
+.matrix::before {
+  content:""; position:absolute; top:0; left:0; right:0; bottom:0;
+  background:repeating-linear-gradient(0deg, transparent, transparent 50px, #0f0 50px, #0f0 51px);
+  animation:rain 10s linear infinite; opacity:0.1;
+}
+@keyframes rain { 0% { transform:translateY(-100px); } 100% { transform:translateY(100vh); } }
+
+.container { max-width:800px; margin:10vh auto; padding:2rem; text-align:center; }
+h1 {
+  font-family:'Orbitron',sans-serif; font-size:4rem; margin-bottom:1rem;
+  background:linear-gradient(90deg, #0f0, #ff0, #0ff);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  text-shadow:0 0 20px #0f0;
+}
+.dollar {
+  color:#ff0; cursor:pointer; position:relative;
+}
+.dollar:hover::after {
+  content:" Registered 6:47 PM MST • Live 7:30 PM";
+  position:absolute; bottom:-2rem; left:50%; transform:translateX(-50%);
+  font-size:0.8rem; color:#0ff; white-space:nowrap;
+}
+.tagline { font-size:1.5rem; margin:1rem 0; color:#0ff; }
+.tagline a { color:#ff0; text-decoration:underline; }
+
+.proof-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:1rem; margin:3rem 0;
+}
+.proof {
+  background:rgba(0,255,0,0.1); padding:1rem; border:1px solid #0f0;
+  border-radius:12px;
+}
+.proof img {
+  width:100%; max-height:150px; object-fit:contain;
+  border:1px dashed #0f0; margin-bottom:0.5rem;
+}
+.proof p { font-size:0.9rem; margin-top:0.5rem; }
+
+.challenge { margin:3rem 0; font-weight:bold; font-size:1.3rem; }
+.challenge input {
+  background:#111; color:#0f0; border:2px solid #0f0;
+  padding:0.5rem 1rem; font-size:1.2rem; width:80px; text-align:center;
+  margin:0 1rem; border-radius:8px;
+}
+.challenge a { color:#ff0; }
+
+.easter { margin-top:4rem; font-size:0.9rem; color:#0ff; opacity:0.7; }
