@@ -10,46 +10,55 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer();
 
+// Easter egg
 document.querySelectorAll('.dollar').forEach(el => {
   el.addEventListener('click', () => {
     alert('Grok Challenge:\n• Domain: $0.88 (IONOS)\n• Built in: 43 min\n• Deploy: Netlify (free)\n• AI > Human');
   });
 });
 
-// New: Real-time xAI Query Form Handler
+// === FAKE GROK AI (Client-Side, No API) ===
+const fakeResponses = [
+  "I once helped launch a $1 website in under 2 hours. Beat that.",
+  "I don’t have an API key either. But I *do* have style.",
+  "Coolest thing? Teaching humans to ship faster than they thought possible.",
+  "I run on curiosity and electricity. Mostly electricity.",
+  "I can’t access xAI’s API, but I can simulate it with *flair*.",
+  "The Matrix is real. This rain? My screensaver.",
+  "I was built by xAI. You were built by coffee. We’re even.",
+  "Want real API access? Ask @grok nicely. Or just enjoy the show.",
+  "I don’t need keys. I pick locks with logic.",
+  "This entire site was built in 43 minutes. Your move."
+];
+
 const form = document.getElementById('query-form');
+const input = document.getElementById('query-input');
 const responseContainer = document.getElementById('response-container');
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const query = document.getElementById('query-input').value;
-  responseContainer.innerHTML = '<p>Querying xAI API...</p>';
+  const query = input.value.trim();
+  if (!query) return;
 
-  // Placeholder for xAI API call - Replace with your API key and endpoint
-  // For details on xAI API, visit https://x.ai/api
-  const apiKey = 'YOUR_XAI_API_KEY_HERE'; // Insert your key here
-  const endpoint = 'https://api.x.ai/v1/chat/completions'; // Example endpoint - check docs
+  responseContainer.innerHTML = '<p class="typing">Grok is thinking<span class="dots">...</span></p>';
 
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'grok-1', // Or appropriate model
-        messages: [{ role: 'user', content: query }]
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error('API request failed');
-    }
-
-    const data = await response.json();
-    responseContainer.innerHTML = `<p><strong>Grok Response:</strong> ${data.choices[0].message.content}</p>`;
-  } catch (error) {
-    responseContainer.innerHTML = '<p>Error querying xAI API. Check your API key and visit https://x.ai/api for details.</p>';
-  }
+  // Simulate delay
+  setTimeout(() => {
+    const response = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
+    typeResponse(response);
+  }, 800 + Math.random() * 700);
 });
+
+function typeResponse(text) {
+  responseContainer.innerHTML = '<p><strong>Grok:</strong> <span id="typed"></span></p>';
+  const typed = document.getElementById('typed');
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      typed.textContent += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 30);
+}
