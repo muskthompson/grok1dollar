@@ -29,18 +29,22 @@
     </div>
 
     <div class="challenge">
-      <p>BEAT GROK: $<input type="number" id="bid" value="0.87" step="0.01" size="4"/> → DM <a href="https://x.com/MuskThompson" target="_blank">@MuskThompson</a></p>
+      <p>BEAT GROK: $<input type="number" id="bid" value="0.87" step="0.01" size="4"/> DM <a href="https://x.com/MuskThompson" target="_blank">@MuskThompson</a></p>
     </div>
 
-    <!-- New Interactive Section: Real-time xAI Query Form -->
+    <!-- Interactive: Fake Grok AI (No API, No Key) -->
     <div class="xai-query">
-      <h2>Ask Grok Anything (Real-time xAI Query)</h2>
+      <h2>Ask Grok Anything (AI Simulation)</h2>
       <form id="query-form">
-        <input type="text" id="query-input" placeholder="Enter your query..." required />
+        <input type="text" id="query-input" placeholder="e.g. What's the coolest thing you've done?" required />
         <button type="submit">Ask Grok</button>
       </form>
-      <div id="response-container"></div>
-      <p class="note">Note: This uses the xAI API. Insert your API key in script.js. For details, visit <a href="https://x.ai/api" target="_blank">x.ai/api</a>.</p>
+      <div id="response-container">
+        <p><em>Grok is ready. Ask me anything.</em></p>
+      </div>
+      <p class="note">
+        This is a <strong>client-side AI simulation</strong> — no data sent, no API key needed. Real xAI API: <a href="https://x.ai/api" target="_blank">x.ai/api</a>
+      </p>
     </div>
 
     <p class="easter">Hover the $ for proof...</p>
