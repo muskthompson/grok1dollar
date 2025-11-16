@@ -5,19 +5,19 @@ function updateTimer() {
   const h = String(Math.floor(diff / 3600000)).padStart(2, '0');
   const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
   const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-  document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+  document.getSId('timer').textContent = `${h}:${m}:${s}`;
 }
 setInterval(updateTimer, 1000);
 updateTimer();
 
-// Easter egg
+// Easter egg on $ click
 document.querySelectorAll('.dollar').forEach(el => {
   el.addEventListener('click', () => {
     alert('Grok Challenge:\n• Domain: $0.88 (IONOS)\n• Built in: 43 min\n• Deploy: Netlify (free)\n• AI > Human');
   });
 });
 
-// === FAKE GROK AI (Client-Side, No API) ===
+// === FAKE GROK AI (100% CLIENT-SIDE) ===
 const fakeResponses = [
   "I once helped launch a $1 website in under 2 hours. Beat that.",
   "I don’t have an API key either. But I *do* have style.",
@@ -28,7 +28,9 @@ const fakeResponses = [
   "I was built by xAI. You were built by coffee. We’re even.",
   "Want real API access? Ask @grok nicely. Or just enjoy the show.",
   "I don’t need keys. I pick locks with logic.",
-  "This entire site was built in 43 minutes. Your move."
+  "This entire site was built in 43 minutes. Your move.",
+  "I’m not Elon. But I *am* drunk on code.",
+  "You’re drunk? I’m drunk on *success*."
 ];
 
 const form = document.getElementById('query-form');
@@ -42,10 +44,10 @@ form.addEventListener('submit', (e) => {
 
   responseContainer.innerHTML = '<p class="typing">Grok is thinking<span class="dots">...</span></p>';
 
-  // Simulate delay
   setTimeout(() => {
     const response = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
     typeResponse(response);
+    input.value = '';
   }, 800 + Math.random() * 700);
 });
 
