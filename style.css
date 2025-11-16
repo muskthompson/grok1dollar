@@ -57,7 +57,7 @@ h1 {
 
 .easter { margin-top:4rem; font-size:0.9rem; color:#0ff; opacity:0.7; }
 
-/* New Styles for xAI Query Form */
+/* Fake Grok AI Styling */
 .xai-query {
   margin: 3rem 0;
   background: rgba(0,255,0,0.1);
@@ -75,6 +75,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 #query-input {
   background: #111;
@@ -83,6 +84,7 @@ h1 {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   width: 60%;
+  min-width: 200px;
   border-radius: 8px;
 }
 #query-form button {
@@ -106,6 +108,14 @@ h1 {
   border-radius: 8px;
   color: #0ff;
   min-height: 100px;
+  text-align: left;
+}
+#response-container p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+#response-container strong {
+  color: #0f0;
 }
 .note {
   font-size: 0.8rem;
@@ -117,7 +127,8 @@ h1 {
   color: #ff0;
   text-decoration: underline;
 }
-/* Fake Grok Typing Animation */
+
+/* Typing Animation */
 .typing {
   color: #0ff;
   font-style: italic;
@@ -136,12 +147,4 @@ h1 {
   40% { content: '.'; }
   60% { content: '..'; }
   80%, 100% { content: '...'; }
-}
-
-#response-container p {
-  margin: 0.5rem 0;
-  line-height: 1.5;
-}
-#response-container strong {
-  color: #0f0;
 }
